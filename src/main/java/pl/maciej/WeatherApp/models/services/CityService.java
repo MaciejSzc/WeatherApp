@@ -6,7 +6,9 @@ import pl.maciej.WeatherApp.models.forms.CityForm;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class CityService {
@@ -43,7 +45,7 @@ public class CityService {
             }
         }
         return tMin.getLocalDateTime();
-        
+
     }
 
     public LocalDateTime greatestAir(){
@@ -64,7 +66,32 @@ public class CityService {
 
     public String greatestCity(){
 
+        Map<String, Integer> cities = new HashMap<>();
 
+        for (CityEntity cityEntity : city) {
+            int counterPresent = 0;
+            int sum = 0;
+
+            for (CityEntity entity : city) {
+                if(cityEntity.getName().equals(entity.getName())){
+                    counterPresent++;
+                    sum = entity.getTemp();
+                }
+            }
+
+            cities.put(cityEntity.getName(), sum / counterPresent);
+        }
+
+        String acutalCityName = "error";
+        int actualCityTemp = Integer.MIN_VALUE;
+        for (Map.Entry<String, Integer> stringIntegerEntry : cities.entrySet()) {
+            if(actualCityTemp < stringIntegerEntry.getValue()){
+                actualCityTemp = stringIntegerEntry.getValue();
+                acutalCityName = stringIntegerEntry.getKey();
+            }
+        }
+
+        return acutalCityName;
     }
 
 
