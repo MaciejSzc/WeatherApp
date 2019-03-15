@@ -2,21 +2,26 @@ package pl.maciej.WeatherApp.models.entities;
 
 import pl.maciej.WeatherApp.models.forms.CityForm;
 
+import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.ZoneId;
+//import java.time.ZoneId;
 import java.util.Objects;
 
 public class CityEntity {
-    ZoneId zone1 = ZoneId.of("Europe/Warsaw");
+    //ZoneId zone1 = ZoneId.of("Europe/Warsaw");//to do usunięcia, bo na sztywno całemu światu ustawiasz warszawska strefe czasowa
     private int temp;
     private int air;
     private String name;
-    private LocalTime localTime;
+    private LocalDateTime localDateTime;
     public CityEntity(int temp, int air, String name) {
         this.temp = temp;
         this.air = air;
         this.name = name;
-        this.localTime = localTime.now(zone1);
+        this.localDateTime = localDateTime.now();
+    }
+
+    public LocalDateTime getLocalDateTime() {
+        return localDateTime;
     }
 
     public int getTemp() {

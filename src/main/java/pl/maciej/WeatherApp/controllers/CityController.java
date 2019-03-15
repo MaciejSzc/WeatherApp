@@ -22,7 +22,7 @@ public class CityController {
 
         model.addAttribute("city_form", new CityForm());
 
-        return "cityupdate";
+        return "city_update";
     }
 
     @PostMapping("/add/product")
@@ -32,11 +32,11 @@ public class CityController {
                         Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("tekst", "Wprowadź poprawne dane");
-            return "cityupdate";
+            return "city_update";
         }
 
 
-            return "cityupdate";
+            return "city_update";
 
     }
 

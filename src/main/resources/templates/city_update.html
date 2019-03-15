@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>Dodaj dane:</h1>
-<form action="/cityupdate" method="post" th:object="${city_form}">
+<form action="/city/update" method="post" th:object="${city_form}">
     Temperatura: <input type="text" th:field="*{temp}" required>
     <br/><br/>
     Wilgotność powietrza: <input type="text" th:field="*{air}" required><br/>
