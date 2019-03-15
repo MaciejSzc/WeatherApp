@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>City Update</title>
+
+</head>
+<body>
+<h1>Dodaj przepis:</h1>
+<form action="/cityupdate" method="post" th:object="${weather_form}">
+    Temperatura: <input type="text" th:field="*{temp}" required>
+    <br/><br/>
+    Wilgotność powietrza: <input type="text" th:field="*{air}" required><br/>
+    <br/><br/>
+    Nazwa miasta: <input type="text" th:field="*{name}" required><br/>
+    <br/><br/>
+    <input type="submit" value="Wyślij">
+    <button><a href="/cityupdate"></a> </button>
+</form>
+
+
+</body>
+</html>

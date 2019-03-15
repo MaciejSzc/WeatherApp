@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather</title>
+    <style>
+        .btn{
+            display: inline-block;
+        }
+        div{
+            display: inline-block;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+
+<div th:each="temp : ${list}">
+    <div  style="height: 200px; width: 200px; text-align: center; background-color: red">
+        <span>Najgoretszy dzien:</span>
+        <span th:text="${temp.get()}"></span><br/>
+    </div>
+    <div  style="height: 200px; width: 200px; text-align: center; background-color: navy">
+        <span>Najwilgotniejszy dzien:</span>
+        <span th:text="${temp.get()}"></span><br/>
+    </div>
+    <div  style="height: 200px; width: 200px; text-align: center; background-color: yellow">
+        <span>Najwieksza srednia temp w:</span>
+        <span th:text="${temp.get()}"></span><br/>
+    </div>
+    <div  style="height: 200px; width: 200px; text-align: center; background-color: blue">
+        <span>Najzimniejszy dzien:</span>
+        <span th:text="${temp.get()}"></span><br/>
+    </div>
+
+    <div>
+        <button class="btn"><a href="" style="text-decoration: none">Dodaj nowa temperature</a></button>
+        <button class="btn" onclick="">Reset</button>
+        <button class="btn" onclick="">Sample</button>
+    </div>
+
+</div>
+</body>
+</html>
