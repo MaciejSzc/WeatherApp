@@ -10,6 +10,7 @@
         div{
             display: inline-block;
             width: 100%;
+            padding-top: 20px;
         }
     </style>
 </head>
@@ -18,25 +19,25 @@
 
 <div th:block th:each="temp : ${list}">
     <div  style="height: 200px; width: 200px; text-align: center; background-color: red">
-        <span>Najgoretszy dzien:</span>
-        <span th:text="${list.greatestTemp()}"></span><br/>
+        <span>Najgorętszy dzień:</span><br/>
+        <span th:text="${list.greatestTemp() == null ? 'Brak danych' : list.greatestTemp()}"></span><br/>
     </div>
-    <div  style="height: 200px; width: 200px; text-align: center; background-color: navy">
-        <span>Najwilgotniejszy dzien:</span>
-        <span th:text="${list.greatestAir()}"></span><br/>
+    <div  style="height: 200px; width: 200px; text-align: center; background-color: limegreen">
+        <span>Najwilgotniejszy dzień:</span><br/>
+        <span th:text="${list.greatestAir() == null ? 'Brak danych' : list.greatestAir()}"></span><br/>
     </div>
     <div  style="height: 200px; width: 200px; text-align: center; background-color: yellow">
-        <span>Najwieksza srednia temp w:</span>
+        <span>Największa średnia temp w:</span><br/>
         <span th:text="${list.greatestCity()}"></span><br/>
     </div>
     <div  style="height: 200px; width: 200px; text-align: center; background-color: blue">
-        <span>Najzimniejszy dzien:</span>
-        <span th:text="${list.lowestTemp()}"></span><br/>
+        <span>Najzimniejszy dzień:</span><br/>
+        <span th:text="${list.lowestTemp() == null ? 'Brak danych': list.lowestTemp()}"></span><br/>
     </div>
     <div>
-        <button class="btn"><a href="/city/update" style="text-decoration: none">Dodaj nowa temperature</a></button>
-        <button class="btn"><a th:href="${'/delete'}">Delete</a> </button>
-        <button class="btn" onclick="">Sample</button>
+        <button class="btn"><a href="/city/update" style="text-decoration: none; color: black">Dodaj nowa temperature</a></button>
+        <button class="btn"><a th:href="${'/delete'}" style="text-decoration: none; color: black">Delete</a> </button>
+        <button class="btn"><a th:href="${'/sample'}" style="text-decoration: none; color: black">Sample</a> </button>
     </div>
 
 </div>

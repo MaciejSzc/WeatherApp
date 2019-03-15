@@ -28,7 +28,9 @@ public class CityController {
 
     @GetMapping("/weather")
     public String weather(Model model){
-        model.addAttribute("list", new CityService());
+        model.addAttribute("list", cityService);
+
+    //    model.addAttribute("maxTemp", cityService.greatestAir())
 
         return "weather";
     }
@@ -39,13 +41,19 @@ public class CityController {
         return "redirect:/weather";
     }
 
+    @GetMapping("/sample")
+    public String sample(Model model){
+        model.addAttribute("list",cityService.randomList());
+        return "redirect:/weather";
+    }
+
     @PostMapping("/city/update")
 
     public String city(@ModelAttribute("city_form") @Valid CityForm cityForm,
                         BindingResult bindingResult,
                         Model model) {
         if (bindingResult.hasErrors()) {
-            model.addAttribute("tekst", "Wprowadź poprawne dane");
+            model.addAttribute("tekst", "Niepoprawne dane");
             return "city_update";
         }
 

@@ -2,6 +2,7 @@ package pl.maciej.WeatherApp.models.entities;
 
 import pl.maciej.WeatherApp.models.forms.CityForm;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 //import java.time.ZoneId;
@@ -12,16 +13,20 @@ public class CityEntity {
     private int temp;
     private int air;
     private String name;
-    private LocalDateTime localDateTime;
+    private LocalDate localDate;
     public CityEntity(int temp, int air, String name) {
         this.temp = temp;
         this.air = air;
         this.name = name;
-        this.localDateTime = localDateTime.now();
+        this.localDate = LocalDate.now();
     }
 
-    public LocalDateTime getLocalDateTime() {
-        return localDateTime;
+    public LocalDate getLocalDate() {
+        return localDate;
+    }
+
+    public void setLocalDate(LocalDate localDate) {
+        this.localDate = localDate;
     }
 
     public int getTemp() {

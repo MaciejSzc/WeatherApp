@@ -4,16 +4,14 @@ import org.springframework.stereotype.Service;
 import pl.maciej.WeatherApp.models.entities.CityEntity;
 import pl.maciej.WeatherApp.models.forms.CityForm;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class CityService {
 
-    List<CityEntity> city = new ArrayList<>();
+   private List<CityEntity> city = new ArrayList<>();
 
     public void addCity(CityForm cityForm){
         CityEntity cityEntity = new CityEntity(cityForm.getTemp(),cityForm.getAir(),cityForm.getName());
@@ -24,40 +22,58 @@ public class CityService {
         city.clear();
     }
 
-    public LocalDateTime greatestTemp(){
-        CityEntity tMax = new CityEntity(0,0,"a");
+    public LocalDate greatestTemp(){
+        CityEntity tMax = new CityEntity(Integer.MIN_VALUE,0,"a");
 
         for(CityEntity c : city){
             if(c.getTemp()>tMax.getTemp()){
                 tMax = c;
             }
         }
-        return tMax.getLocalDateTime();
+        if (tMax.getName().equals("a")) {
+            return null;
+        } else {
+
+            return tMax.getLocalDate();
+
+        }
 
     }
 
-    public LocalDateTime lowestTemp(){
-        CityEntity tMin = new CityEntity(0,0,"a");
+    public LocalDate lowestTemp() {
+        CityEntity tMin = new CityEntity(Integer.MAX_VALUE, 0, "a");
 
-        for(CityEntity c : city){
-            if(c.getTemp()< tMin.getTemp()){
+        for (CityEntity c : city) {
+            if (c.getTemp() < tMin.getTemp()) {
                 tMin = c;
             }
         }
-        return tMin.getLocalDateTime();
 
+        if (tMin.getName().equals("a")) {
+            return null;
+        } else {
+
+            return tMin.getLocalDate();
+
+        }
     }
 
-    public LocalDateTime greatestAir(){
-        CityEntity aMax = new CityEntity(0,0,"a");
+
+    public LocalDate greatestAir(){
+        CityEntity aMax = new CityEntity(Integer.MIN_VALUE,0,"a");
 
         for(CityEntity c : city){
             if(c.getTemp()>aMax.getTemp()){
                 aMax = c;
             }
         }
-        return aMax.getLocalDateTime();
+        if (aMax.getName().equals("a")) {
+            return null;
+        } else {
 
+            return aMax.getLocalDate();
+
+        }
 
     }
 
@@ -82,7 +98,7 @@ public class CityService {
             cities.put(cityEntity.getName(), sum / counterPresent);
         }
 
-        String acutalCityName = "error";
+        String acutalCityName = "Brak danych";
         int actualCityTemp = Integer.MIN_VALUE;
         for (Map.Entry<String, Integer> stringIntegerEntry : cities.entrySet()) {
             if(actualCityTemp < stringIntegerEntry.getValue()){
@@ -94,5 +110,13 @@ public class CityService {
         return acutalCityName;
     }
 
+    public List<CityEntity> randomList(){
+
+       city.add(new CityEntity((int)Math.random()*100,22,"Szczecin"));
+       city.add(new CityEntity((int)Math.random()*100,50,"Koszalin"));
+
+
+        return city;
+    }
 
 }
