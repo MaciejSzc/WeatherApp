@@ -75,7 +75,7 @@ public class CityService {
             for (CityEntity entity : city) {
                 if(cityEntity.getName().equals(entity.getName())){
                     counterPresent++;
-                    sum = entity.getTemp();
+                    sum += entity.getTemp();
                 }
             }
 

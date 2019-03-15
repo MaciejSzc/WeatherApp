@@ -16,27 +16,26 @@
 <body>
 
 
-<div th:each="temp : ${list}">
+<div th:block th:each="temp : ${list}">
     <div  style="height: 200px; width: 200px; text-align: center; background-color: red">
         <span>Najgoretszy dzien:</span>
-        <span th:text="${temp.get()}"></span><br/>
+        <span th:text="${list.greatestTemp()}"></span><br/>
     </div>
     <div  style="height: 200px; width: 200px; text-align: center; background-color: navy">
         <span>Najwilgotniejszy dzien:</span>
-        <span th:text="${temp.get()}"></span><br/>
+        <span th:text="${list.greatestAir()}"></span><br/>
     </div>
     <div  style="height: 200px; width: 200px; text-align: center; background-color: yellow">
         <span>Najwieksza srednia temp w:</span>
-        <span th:text="${temp.get()}"></span><br/>
+        <span th:text="${list.greatestCity()}"></span><br/>
     </div>
     <div  style="height: 200px; width: 200px; text-align: center; background-color: blue">
         <span>Najzimniejszy dzien:</span>
-        <span th:text="${temp.get()}"></span><br/>
+        <span th:text="${list.lowestTemp()}"></span><br/>
     </div>
-
     <div>
-        <button class="btn"><a href="/cityupdate" style="text-decoration: none">Dodaj nowa temperature</a></button>
-        <button class="btn" onclick="">Reset</button>
+        <button class="btn"><a href="/city/update" style="text-decoration: none">Dodaj nowa temperature</a></button>
+        <button class="btn"><a th:href="${'/delete'}">Delete</a> </button>
         <button class="btn" onclick="">Sample</button>
     </div>
 

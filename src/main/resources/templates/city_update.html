@@ -7,6 +7,7 @@
 </head>
 <body>
 <h1>Dodaj dane:</h1>
+<span th:text="${tekst}"></span>
 <form action="/city/update" method="post" th:object="${city_form}">
     Temperatura: <input type="text" th:field="*{temp}" required>
     <br/><br/>
@@ -15,7 +16,7 @@
     Nazwa miasta: <input type="text" th:field="*{name}" required><br/>
     <br/><br/>
     <input type="submit" value="Wyślij">
-    <button><a href="/cityupdate"></a> </button>
+    <button><a href="/weather">Wróć</a></button>
 </form>
 
 
